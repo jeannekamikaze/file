@@ -11,14 +11,14 @@ else {
     OBJECTS_DIR=$$(SRC)/.obj/debug/$$TARGET
 }
 
-QMAKE_CXXFLAGS_DEBUG += -DDEBUG
+QMAKE_CXXFLAGS_DEBUG += -D_DEBUG
 unix: {
     QMAKE_CXXFLAGS += --std=c++11
 }
 win32: {
     QMAKE_CXXFLAGS += -DNOMINMAX
     QMAKE_CXXFLAGS_DEBUG += /Zi
-    QMAKE_LFLAGS_DEBUG += /DEBUG
+    QMAKE_LFLAGS_DEBUG += /_DEBUG
 }
 
 INCLUDEPATH = include $$(SRC)/cpp/include
