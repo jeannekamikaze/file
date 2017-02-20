@@ -38,15 +38,6 @@ FileSystem::FileSystem (const std::vector<FilePath>& paths)
         addHandler(std::move(std::unique_ptr<FileSystemHandler>(new RegularFileSystem(path))));
 }
 
-FileSystem::FileSystem (FileSystem&& filesystem)
-    : my(std::move(filesystem.my)) {}
-
-FileSystem& FileSystem::operator= (FileSystem&& filesystem)
-{
-    my = std::move(filesystem.my);
-    return *this;
-}
-
 FileSystem::~FileSystem () {}
 
 File FileSystem::open(const FilePath& filepath) const
@@ -72,17 +63,6 @@ void FileSystem::addHandler (std::unique_ptr<FileSystemHandler> handler)
 
 File::File (std::unique_ptr<FileHandler> handler)
     : handler(std::move(handler)) {}
-
-File::File (File&& file)
-{
-    handler = std::move(file.handler);
-}
-
-File& File::operator=(File&& file)
-{
-    handler = std::move(file.handler);
-    return *this;
-}
 
 File::~File () {}
 

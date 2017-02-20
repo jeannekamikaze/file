@@ -1,7 +1,6 @@
 #pragma once
 
-#include <cpp/NonCopyable.h>
-#include <cpp/unique.h>
+#include <cpp/cpp.h>
 #include <memory>
 #include <vector>
 #include <fstream>
@@ -31,9 +30,9 @@ public:
     /// Construct a file system to load files from the given paths.
     explicit FileSystem (const std::vector<FilePath>&);
 
-    FileSystem (FileSystem&&);
+    FileSystem (FileSystem&&) = default;
 
-    FileSystem& operator= (FileSystem&&);
+    FileSystem& operator= (FileSystem&&) = default;
 
     ~FileSystem ();
 
